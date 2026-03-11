@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nyota Fund</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Ionicons for precise icons -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</head>
+
+<body>
+    <div class="progress-container">
+        <div id="progress-bar" class="progress-bar"></div>
+    </div>
+
+    <div class="app">
+        <!-- Step 0: Home Page -->
+        <div id="step-0" class="step active">
+            <div class="home-header">
+                <div class="star-logo">
+                    <ion-icon name="star"></ion-icon>
+                </div>
+                <h1 class="brand-title">Nyota Fund</h1>
+                <p class="brand-slogan">Kuza Ndoto Yako</p>
+            </div>
+
+            <main class="card home-card">
+                <div class="range-gradient-line"></div>
+                <div class="range-info">
+                    <p class="range-label">Loan Amount Range</p>
+                    <h2 class="range-value">Ksh 5,500 - 60,600</h2>
+                    <p class="range-sub">Flexible repayment terms available</p>
+                </div>
+
+                <div class="home-features">
+                    <div class="h-feature">
+                        <ion-icon name="flash-outline"></ion-icon>
+                        <span>Instant Approval</span>
+                    </div>
+                    <div class="h-feature">
+                        <ion-icon name="document-text-outline"></ion-icon>
+                        <span>Paperless</span>
+                    </div>
+                    <div class="h-feature">
+                        <ion-icon name="shield-checkmark-outline"></ion-icon>
+                        <span>Secure</span>
+                    </div>
+                </div>
+
+                <div class="trust-labels">
+                    <span><ion-icon name="checkmark-circle-outline"></ion-icon> CBK Licensed</span>
+                    <span><ion-icon name="checkmark-circle-outline"></ion-icon> 50K+ Users</span>
+                </div>
+            </main>
+
+            <div class="btn-bottom">
+                <button class="primary-btn" onclick="goToStep(1)">
+                    <span>Apply for Loan</span>
+                    <ion-icon name="chevron-forward-outline"></ion-icon>
+                </button>
+                <p class="terms-text">By applying, you agree to our Terms & Conditions</p>
+            </div>
+        </div>
+
+        <!-- Step 1: Eligibility -->
+        <div id="step-1" class="step">
+            <header class="header">
+                <div class="back-btn">
+                    <ion-icon name="arrow-back-outline"></ion-icon>
+                </div>
+                <div class="header-title">
+                    <h1>Check Eligibility</h1>
+                    <p>Step 1 of 3</p>
+                </div>
+            </header>
+
+            <main class="card">
+                <form id="eligibility-form">
+                    <div class="form-group">
+                        <label><ion-icon name="person-outline"></ion-icon> Full Name</label>
+                        <input type="text" id="fullName" placeholder="Enter your full name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label><ion-icon name="call-outline"></ion-icon> Phone Number (M-Pesa)</label>
+                        <input type="tel" id="phoneNumber" placeholder="07XXXXXXXX" pattern="[0-9]{10}" required>
+                        <span class="input-hint">This number will receive the STK Push</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label><ion-icon name="card-outline"></ion-icon> ID Number</label>
+                        <input type="text" id="idNumber" placeholder="Enter ID number" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label><ion-icon name="briefcase-outline"></ion-icon> Loan Purpose</label>
+                        <div class="select-wrapper">
+                            <select id="loanPurpose" required>
+                                <option value="" disabled selected>Select purpose</option>
+                                <option value="Business">Business</option>
+                                <option value="Personal">Personal</option>
+                                <option value="Education">Education</option>
+                                <option value="Emergency">Emergency</option>
+                            </select>
+                        </div>
+                    </div>
+                </form>
+            </main>
+
+            <div class="btn-bottom">
+                <button type="submit" form="eligibility-form" class="primary-btn" id="btn-check">
+                    <span>Check Eligibility</span>
+                    <ion-icon name="chevron-forward-outline"></ion-icon>
+                </button>
+                <div class="kimi-badge">
+                    <div class="circle">K</div>
+                    <span>Kimi Agent</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 2: Offers -->
+        <div id="step-2" class="step">
+            <header class="header">
+                <div class="back-btn" onclick="goToStep(1)">
+                    <ion-icon name="arrow-back-outline"></ion-icon>
+                </div>
+                <div class="header-title">
+                    <h1>Loan Offers</h1>
+                    <p>Step 2 of 3</p>
+                </div>
+            </header>
+
+            <div class="greeting-box" style="text-align: center; margin-bottom: 32px;">
+                <h2 style="font-size: 18px; font-weight: 700;">Hi <span id="userNameDisplay"
+                        style="color: #4ade80;"></span>,</h2>
+                <p style="font-size: 12px; color: var(--text-gray); margin-top: 4px;">
+                    You qualify for these options based on your records
+                </p>
+            </div>
+
+            <main class="offer-grid">
+                <!-- Row 1 -->
+                <div class="offer-card" data-amount="5500" data-fee="100">
+                    <div class="o-top">Ksh 5,500</div>
+                    <div class="o-bottom">
+                        <span class="o-label">Processing Fee</span>
+                        <span class="o-value">Ksh 100</span>
+                    </div>
+                </div>
+                <div class="offer-card" data-amount="6800" data-fee="130">
+                    <div class="o-top">Ksh 6,800</div>
+                    <div class="o-bottom">
+                        <span class="o-label">Processing Fee</span>
+                        <span class="o-value">Ksh 130</span>
+                    </div>
+                </div>
+                <!-- Row 2 -->
+                <div class="offer-card" data-amount="7800" data-fee="170">
+                    <div class="o-top">Ksh 7,800</div>
+                    <div class="o-bottom">
+                        <span class="o-label">Processing Fee</span>
+                        <span class="o-value">Ksh 170</span>
+                    </div>
+                </div>
+                <div class="offer-card" data-amount="9800" data-fee="190">
+                    <div class="o-top">Ksh 9,800</div>
+                    <div class="o-bottom">
+                        <span class="o-label">Processing Fee</span>
+                        <span class="o-value">Ksh 190</span>
+                    </div>
+                </div>
+                <!-- Row 3 -->
+                <div class="offer-card" data-amount="11200" data-fee="230">
+                    <div class="o-top">Ksh 11,200</div>
+                    <div class="o-bottom">
+                        <span class="o-label">Processing Fee</span>
+                        <span class="o-value">Ksh 230</span>
+                    </div>
+                </div>
+                <div class="offer-card" data-amount="16800" data-fee="250">
+                    <div class="o-top">Ksh 16,800</div>
+                    <div class="o-bottom">
+                        <span class="o-label">Processing Fee</span>
+                        <span class="o-value">Ksh 250</span>
+                    </div>
+                </div>
+                <!-- Row 4 -->
+                <div class="offer-card" data-amount="21200" data-fee="270">
+                    <div class="o-top">Ksh 21,200</div>
+                    <div class="o-bottom">
+                        <span class="o-label">Processing Fee</span>
+                        <span class="o-value">Ksh 270</span>
+                    </div>
+                </div>
+                <div class="offer-card" data-amount="25600" data-fee="400">
+                    <div class="o-top">Ksh 25,600</div>
+                    <div class="o-bottom">
+                        <span class="o-label">Processing Fee</span>
+                        <span class="o-value">Ksh 400</span>
+                    </div>
+                </div>
+                <!-- Row 5 -->
+                <div class="offer-card" data-amount="30000" data-fee="470">
+                    <div class="o-top">Ksh 30,000</div>
+                    <div class="o-bottom">
+                        <span class="o-label">Processing Fee</span>
+                        <span class="o-value">Ksh 470</span>
+                    </div>
+                </div>
+                <div class="offer-card" data-amount="35400" data-fee="580">
+                    <div class="o-top">Ksh 35,400</div>
+                    <div class="o-bottom">
+                        <span class="o-label">Processing Fee</span>
+                        <span class="o-value">Ksh 580</span>
+                    </div>
+                </div>
+                <!-- Row 6 -->
+                <div class="offer-card" data-amount="39800" data-fee="730">
+                    <div class="o-top">Ksh 39,800</div>
+                    <div class="o-bottom">
+                        <span class="o-label">Processing Fee</span>
+                        <span class="o-value">Ksh 730</span>
+                    </div>
+                </div>
+                <div class="offer-card" data-amount="44200" data-fee="1010">
+                    <div class="o-top">Ksh 44,200</div>
+                    <div class="o-bottom">
+                        <span class="o-label">Processing Fee</span>
+                        <span class="o-value">Ksh 1010</span>
+                    </div>
+                </div>
+                <!-- Row 7 -->
+                <div class="offer-card" data-amount="48800" data-fee="1500">
+                    <div class="o-top">Ksh 48,800</div>
+                    <div class="o-bottom">
+                        <span class="o-label">Processing Fee</span>
+                        <span class="o-value">Ksh 1500</span>
+                    </div>
+                </div>
+                <div class="offer-card" data-amount="60600" data-fee="2050">
+                    <div class="o-top">Ksh 60,600</div>
+                    <div class="o-bottom">
+                        <span class="o-label">Processing Fee</span>
+                        <span class="o-value">Ksh 2050</span>
+                    </div>
+                </div>
+            </main>
+
+            <div class="step-2-footer">
+                <ion-icon name="information-circle-outline"></ion-icon>
+                <span>All loans are subject to terms and conditions. Processing fee required.</span>
+            </div>
+
+            <div class="btn-bottom" style="height: 60px;">
+            </div>
+        </div>
+
+        <!-- Step 3: Payment -->
+        <div id="step-3" class="step">
+            <header class="header">
+                <div class="back-btn" onclick="goToStep(2)">
+                    <ion-icon name="arrow-back-outline"></ion-icon>
+                </div>
+                <div class="header-title">
+                    <p style="text-align: right; width: 100%;">Step 3 of 3</p>
+                </div>
+            </header>
+
+            <div class="payment-header" style="text-align: center; margin-top: 40px;">
+                <div id="payment-status-icon"
+                    style="width: 80px; height: 80px; background: #166534; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 24px; transition: all 0.3s;">
+                    <ion-icon name="paper-plane-outline" style="font-size: 36px; color: #4ade80;"></ion-icon>
+                </div>
+                <h1 id="payment-status-title" style="font-size: 24px;">Processing Payment</h1>
+                <p id="payment-status-desc"
+                    style="font-size: 14px; color: var(--text-gray); margin-top: 12px; padding: 0 40px;">
+                    We are initiating an M-Pesa STK Push to <span id="payment-phone"
+                        style="color: white; font-weight: 600;"></span>
+                </p>
+            </div>
+
+            <div class="card" style="margin-top: 40px; padding: 24px;">
+                <div class="modal-row">
+                    <span style="color: var(--text-gray);">Loan Amount</span>
+                    <span id="finalAmount" style="font-weight: 700;">Ksh 0</span>
+                </div>
+                <div class="modal-row">
+                    <span style="color: var(--text-gray);">Processing Fee</span>
+                    <span id="finalFee" style="color: var(--error-red);">Ksh 0</span>
+                </div>
+                <div class="modal-row total"
+                    style="margin-top: 16px; padding-top: 16px; border-top: 1px solid #262626;">
+                    <span>You Will Receive</span>
+                    <span id="finalReceive" style="color: #22c55e; font-weight: 700;">Ksh 0</span>
+                </div>
+            </div>
+
+            <div class="processing-loader"
+                style="display: flex; flex-direction: column; align-items: center; gap: 16px; margin-top: 40px;">
+                <div class="spinner" style="width: 32px; height: 32px; border-width: 4px;"></div>
+                <p style="font-size: 12px; color: var(--text-muted);">Please wait for the prompt on your phone...</p>
+            </div>
+
+            <div class="btn-bottom" id="payment-back-btn" style="display: none;">
+                <button class="primary-btn" onclick="goToStep(0)">
+                    <ion-icon name="home-outline"></ion-icon>
+                    <span>Back to Home</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="modal-overlay" class="modal-overlay">
+        <div class="modal">
+            <h2>Confirm Selection</h2>
+            <div class="modal-row">
+                <span class="text-gray">Loan Amount</span>
+                <span id="modal-amount">Ksh 5,500</span>
+            </div>
+            <div class="modal-row">
+                <span class="text-gray">Processing Fee</span>
+                <span id="modal-fee">Ksh 100</span>
+            </div>
+            <div class="modal-row total">
+                <span>You Will Receive</span>
+                <span id="modal-receive">Ksh 5,400</span>
+            </div>
+            <div class="modal-btns">
+                <button class="ghost-btn" onclick="closeModal()">Back</button>
+                <button class="primary-btn" onclick="confirmLoan()">Proceed to Payment</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

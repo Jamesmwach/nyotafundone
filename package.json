@@ -1,0 +1,13 @@
+{
+    "name": "nyotafund",
+    "version": "1.0.0",
+    "description": "Nyota Fund - Premium Loan Application",
+    "main": "index.html",
+    "scripts": {
+        "start": "serve ."
+    },
+    "dependencies": {},
+    "devDependencies": {
+        "serve": "^14.2.0"
+    }
+}
