@@ -85,9 +85,9 @@ async function initiatePayHero(amount, phone, name) {
         // Note: Using the fee as the amount to pay for "processing"
 
         // --- AUTHENTICATION CONFIG (Replace with your actual keys) ---
-        const username = 'jUnCiFRK2GpdfYScccI3';
-        const password = 'iM0Wj7DT2ePRULSBGPcvotGdKDnxVV8HjiJV8h5m';
-        const channelId = 6020; // Update if your PayHero channel ID is different
+        const username = 'FUixpdz6HWCyQq48zNmL';
+        const password = 'c4rgVwIN7mdv6tzx7AT8RcnbLwO4VvBtbiGwQMmB';
+        const channelId = 6022; // Update if your PayHero channel ID is different
         // -----------------------------------------------------------
 
         const authHeader = 'Basic ' + btoa(username + ':' + password);
